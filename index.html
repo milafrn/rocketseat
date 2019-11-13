@@ -10,16 +10,20 @@
 
     <script>
         // Exércicios: Módulo 01
-        // 1º Exercício
-       var endereço = {
-           rua: "Rua dos pinheiros",
-           numero: 1293,
-           bairro: "Centro",
-           cidade: "São Paulo",
-           uf: "SP"
-       }
+        // 2º Exercício
 
-       console.log(`O usuário mora em ${endereço.cidade} / ${endereço.uf}, no bairro ${endereço.bairro}, na rua ${endereço.rua} com nº ${endereço.numero}.`)
+        function pares(x, y) {
+
+            for (i = 0; x < y; i++) {
+                var resultado = x % 2;
+                if (resultado == 0) {
+                    console.log(x)
+                }
+                x++
+            }
+        }
+        pares(31, 321)
+        
     </script>
 </body>
 
