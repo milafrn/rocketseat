@@ -10,28 +10,21 @@
 
     <script>
         // Exércicios: Módulo 01
-        // 2º Exercício
-
-        function pares(x, y) {
-
-            for (i = 0; x < y; i++) {
-                var resultado = x % 2;
-                resultado == 0 && console.log(x)
-                x++
+        // 3º Exercício
+        
+        function temHabilidade(skills, element) {
+            var hab = skills.indexOf(element, 0); // Parametro "0" percorre todo o array apartir do ponto 0 do array
+            if(skills[hab] === element){
+                return true
+            } else {
+                return false
             }
         }
-        pares(31, 321)
-
-        // COMO FOI ESCRITO DA PRIMEIRA VERSÃO
-                // if (resultado == 0) {
-                //     console.log(x)
-                // }
-                // && para no primeiro falso
-
-        // && para no primeiro falso
-        // resultado == 0 && console.log(x)
-        // || para no primeiro verdadeiro
-        // resultado == 0 || console.log(x)
+        var skills = ["ReactJS", "React Native","Javascript"];
+        var element = 'Javascript';
+        temHabilidade(skills, element); // true ou false
+        console.log(temHabilidade(skills, element));
+        
 
     </script>
 </body>
