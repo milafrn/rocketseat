@@ -5,29 +5,23 @@
 </head>
 
 <body>
-
-
-
     <script>
         // Exércicios: Módulo 01
-        // 5º Exercício
+        // 3º Exercício
 
-        var usuarios = [
-            {
-                nome: "Diego",
-                habilidades: ["Javascript", "ReactJS", "Redux"]
-            },
-            {
-                nome: "Gabriel",
-                habilidades: ["VueJS", "Ruby on Rails", "Elixir"]
+        function temHabilidade(skills, elemento) {
+            var hab = skills.indexOf(elemento, 0); // Parametro "0" percorre todo o array apartir do ponto 0 do array
+            if (skills[hab] === elemento) {
+                return true
+            } else {
+                return false
             }
-        ];
-
-        for (usuario of usuarios) {
-
-            console.log(`O ${usuario.nome} possui as habilidades: ${usuario.habilidades.join(', ')}`)
-
         }
+
+        var skills = ["ReactJS", "React Native", "Javascript"];
+        var habilidade = 'Javascript';
+        temHabilidade(skills, habilidade); // true ou false
+        console.log(temHabilidade(skills, habilidade));
 
     </script>
 </body>
