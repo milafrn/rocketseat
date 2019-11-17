@@ -7,22 +7,28 @@
 <body>
     <script>
         // Exércicios: Módulo 01
-        // 3º Exercício
+        // 4º Exercício
 
-        function temHabilidade(skills, elemento) {
-            var hab = skills.indexOf(elemento, 0); // Parametro "0" percorre todo o array apartir do ponto 0 do array
-            if (skills[hab] === elemento) {
-                return true
+        function experiencia(anos) {
+            if (anos <= 1) {
+                console.log('O nivel de experiência é Iniciante');
+            } else if (anos > 1 && anos <= 3) {
+                console.log('O nivel de experiência é Intermediário');
+            } else if (anos > 3 && anos <= 6) {
+                console.log('O nivel de experiência é Avançado');
             } else {
-                return false
+                console.log('O nivel de experiência é Jedi Master');
             }
+
         }
 
-        var skills = ["ReactJS", "React Native", "Javascript"];
-        var habilidade = 'Javascript';
-        temHabilidade(skills, habilidade); // true ou false
-        console.log(temHabilidade(skills, habilidade));
+        var anosEstudo = 2;
+        experiencia(anosEstudo);
 
+        // De 0-1 ano: Iniciante
+        // De 1-3 anos: Intermediário
+        // De 3-6 anos: Avançado
+        // De 7 acima: Jedi Master
     </script>
 </body>
 
