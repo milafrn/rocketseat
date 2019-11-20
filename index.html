@@ -65,6 +65,7 @@
 
             }
 
+        let boxLista = document.createElement('ul');
 
             quadrado.style.width = 100;
             quadrado.style.height = 100;
@@ -84,14 +85,14 @@
                 return
             }
 
-            let textInput = document.createTextNode(input.value);
-            let lista = document.createElement('ul');
-            body.appendChild(lista);
-            lista.appendChild(textInput);
+            nomes.push(input.value);
+            imprimeNomes();
 
             input.value = '';
             console.log(textInput);
         })
+
+        imprimeNomes();
 
     </script>
 </body>
