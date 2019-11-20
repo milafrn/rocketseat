@@ -27,16 +27,21 @@
         let textAdicionar = document.createTextNode('Adicionar');
         button.appendChild(textAdicionar);
 
-        var nomes = ["Diego", "Gabriel", "Lucas"];
+        let nomes = ["Diego", "Gabriel", "Lucas"];
 
+        let boxLista = document.createElement('ul');
 
+        const imprimeNomes = () => {
+            boxLista.innerHTML = '';
 
-        for (nome of nomes) {
-            let lista = document.createElement('ul');
-            body.appendChild(lista);
+            for (nome of nomes) {
+                let lista = document.createElement('li');
+                boxLista.appendChild(lista)
+                body.appendChild(boxLista);
 
-            let textNome = document.createTextNode(nome);
-            lista.appendChild(textNome);
+                let textNome = document.createTextNode(nome);
+                lista.appendChild(textNome);
+            }
         }
 
         button.addEventListener('click', () => {
@@ -45,14 +50,14 @@
                 return
             }
 
-            let textInput = document.createTextNode(input.value);
-            let lista = document.createElement('ul');
-            body.appendChild(lista);
-            lista.appendChild(textInput);
+            nomes.push(input.value);
+            imprimeNomes();
 
             input.value = '';
             console.log(textInput);
         })
+
+        imprimeNomes();
 
     </script>
 </body>
