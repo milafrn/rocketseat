@@ -16,6 +16,7 @@
 
         // Desafio pessoal: Adicionado para que o width também seja randomico ao colocar o mouse em cima.
         // Desafio pessoal 2: Adicionado condição para explodir caso for menor que 20 o valor do width
+        // Desafio pessoal 3: Adicionado para ao explodir os quadrados em volta ficarem azuis. Removido Randomização de cor.
 
 
         let selectBody = document.querySelector('body');
@@ -23,34 +24,46 @@
         selectBody.appendChild(tela)
 
         let criaButton = document.createElement('button');
+        // criaButton.textContent = 'Criar Quadrado'
         tela.appendChild(criaButton);
 
         let textElement = document.createTextNode('Criar Quadrado');
         criaButton.appendChild(textElement);
 
-        function getRandomColor() {
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
+        // function getRandomColor() {
+        //     var letters = "0123456789ABCDEF";
+        //     var color = "#";
+        //     for (var i = 0; i < 6; i++) {
+        //         color += letters[Math.floor(Math.random() * 16)];
+        //     }
+        //     return color;
+        // }
 
+        let quadrados = []
         let criaQuadrado = () => {
             let quadrado = document.createElement('div');
-            quadrado.addEventListener("mouseover", (event) => {
-                quadrado.style.backgroundColor = getRandomColor();
-                let widthRandom = parseInt(quadrado.style.width)
-                if (Math.random() > 0.5) {
-                    quadrado.style.width = widthRandom * 1.1;
-                } else {
-                    quadrado.style.width = widthRandom * 0.90;
-                }
-                if (widthRandom < 20) {
-                    quadrado = quadrado.parentNode.removeChild(quadrado)
-                }
-            }, false)
+            quadrados.push(quadrado)
+            for (let i = 0; i < quadrados.length; i++) {
+                console.log(quadrados)
+                quadrados[i].addEventListener("mouseover", (event) => {
+
+                    // event.target.style.backgroundColor = getRandomColor();
+                    let widthRandom = parseInt(quadrados[i].style.width)
+                    if (Math.random() > 0.5) {
+                        quadrados[i].style.width = widthRandom * 1.1;
+                    } else {
+                        quadrados[i].style.width = widthRandom * 0.90;
+                    }
+                    if (widthRandom < 20) {
+                        // quadrado = quadrado.parentNode.removeChild(quadrado)
+                        quadrados[i - 1].style.backgroundColor = 'blue';
+                        quadrados[i + 1].style.backgroundColor = 'blue';
+                        event.target.remove()
+                    }
+                });
+
+            }
+
 
             quadrado.style.width = 100;
             quadrado.style.height = 100;
