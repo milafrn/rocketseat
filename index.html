@@ -7,61 +7,26 @@
 <body>
     <script>
         // Exércicios: Módulo 02
-        // Execicio 02
+        // Execicio 03
         // Branch Modulo-02
 
-        // Enunciado
-        // Utilizando o resultado do primeiro desafio, toda vez que o usuário passar o mouse por cima de
-        // algum quadrado troque sua cor para uma cor aleatória gerada pela função abaixo:
+        // A partir do seguinte vetor:
+        // var nomes = ["Diego", "Gabriel", "Lucas"];
+        // Preencha uma lista(<ul>) no HTML com os itens da seguinte forma:
+        // ● Diego
+        // ● Gabriel
+        // ● Lucas
+        
+        let body = document.querySelector('body')
 
-        // Desafio pessoal: Adicionado para que o width também seja randomico ao colocar o mouse em cima.
-        // Desafio pessoal 2: Adicionado condição para explodir caso for menor que 20 o valor do width
+        var nomes = ["Diego", "Gabriel", "Lucas"];
 
-
-        let selectBody = document.querySelector('body');
-        let tela = document.createElement('div');
-        selectBody.appendChild(tela)
-
-        let criaButton = document.createElement('button');
-        tela.appendChild(criaButton);
-
-        let textElement = document.createTextNode('Criar Quadrado');
-        criaButton.appendChild(textElement);
-
-        function getRandomColor() {
-            var letters = "0123456789ABCDEF";
-            var color = "#";
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
-
-        let criaQuadrado = () => {
-            let quadrado = document.createElement('div');
-            quadrado.addEventListener("mouseover", (event) => {
-                quadrado.style.backgroundColor = getRandomColor();
-                let widthRandom = parseInt(quadrado.style.width)
-                if (Math.random() > 0.5) {
-                    quadrado.style.width = widthRandom * 1.1;
-                } else {
-                    quadrado.style.width = widthRandom * 0.90;
-                }
-                if (widthRandom < 20) {
-                    quadrado = quadrado.parentNode.removeChild(quadrado)
-                }
-            }, false)
-
-            quadrado.style.width = 100;
-            quadrado.style.height = 100;
-            quadrado.style.margin = 5;
-            quadrado.style.backgroundColor = 'red';
-
-            tela.appendChild(quadrado);
-        }
-
-        criaButton.onclick = () => {
-            criaQuadrado();
+        for (nome of nomes){
+            let lista = document.createElement('ul');
+            body.appendChild(lista);
+            
+            let text = document.createTextNode(nome);
+            lista.appendChild(text);
         }
 
     </script>
