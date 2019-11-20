@@ -7,13 +7,15 @@
 <body>
     <script>
         // Exércicios: Módulo 02
-        // Execicio 01
+        // Execicio 02
         // Branch Modulo-02
 
         // Enunciado
-        // Crie um botão que ao ser clicado cria um novo elemento em tela com a forma de um quadrado
-        // vermelho com 100px de altura e largura.Sempre que o botão for clicado um novo quadrado deve
-        // aparecer na tela.
+        // Utilizando o resultado do primeiro desafio, toda vez que o usuário passar o mouse por cima de
+        // algum quadrado troque sua cor para uma cor aleatória gerada pela função abaixo:
+
+        // Desafio pessoal: Adicionado para que o width também seja randomico ao colocar o mouse em cima.
+
 
         let selectBody = document.querySelector('body');
         let tela = document.createElement('div');
@@ -25,16 +27,43 @@
         let textElement = document.createTextNode('Criar Quadrado');
         criaButton.appendChild(textElement);
 
-        criaButton.onclick = () => {
-            let criaQuadrado = document.createElement('div');
-            tela.appendChild(criaQuadrado);
-
-            criaQuadrado.style.width = 100;
-            criaQuadrado.style.height = 100;
-            criaQuadrado.style.margin = 5;
-            criaQuadrado.style.backgroundColor = 'red';
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
-        
+
+        let criaQuadrado = () => {
+            let quadrado = document.createElement('div');
+            quadrado.addEventListener("mouseover", (event) => {
+                quadrado.style.backgroundColor = getRandomColor();
+                let widthRandom = parseInt(quadrado.style.width)
+                if (Math.random() > 0.5) {
+                    quadrado.style.width = widthRandom * 1.1;
+                } else {
+                    quadrado.style.width = widthRandom * 0.90;
+                }
+            }, false)
+
+            quadrado.style.width = 100;
+            quadrado.style.height = 100;
+            quadrado.style.margin = 5;
+            quadrado.style.backgroundColor = 'red';
+
+            tela.appendChild(quadrado);
+        }
+
+        criaButton.onclick = () => {
+            criaQuadrado();
+        }
+
+
+
+
+
     </script>
 </body>
 
