@@ -7,27 +7,52 @@
 <body>
     <script>
         // Exércicios: Módulo 02
-        // Execicio 03
+        // Execicio 04
         // Branch Modulo-02
 
-        // A partir do seguinte vetor:
-        // var nomes = ["Diego", "Gabriel", "Lucas"];
-        // Preencha uma lista(<ul>) no HTML com os itens da seguinte forma:
-        // ● Diego
-        // ● Gabriel
-        // ● Lucas
-        
+        //Seguindo o resultado do exercício anterior adicione um input em tela e um botão como a seguir:
+        // <input type="text" name="nome">
+        // <button onClick="adicionar()">Adicionar</button>
+        // Ao clicar no botão, a função adicionar() deve ser disparada adicionando um novo item a lista de
+        // nomes baseado no nome preenchido no input e renderizando o novo item em tela juntos aos
+        // demais itens anteriores. Além disso, o conteúdo do input deve ser apagado após o clique.
+
         let body = document.querySelector('body')
+
+        let input = document.createElement('input');
+        body.appendChild(input)
+        let button = document.createElement('button');
+        body.appendChild(button)
+
+        let textAdicionar = document.createTextNode('Adicionar');
+        button.appendChild(textAdicionar);
 
         var nomes = ["Diego", "Gabriel", "Lucas"];
 
-        for (nome of nomes){
+
+
+        for (nome of nomes) {
             let lista = document.createElement('ul');
             body.appendChild(lista);
-            
-            let text = document.createTextNode(nome);
-            lista.appendChild(text);
+
+            let textNome = document.createTextNode(nome);
+            lista.appendChild(textNome);
         }
+
+        button.addEventListener('click', () => {
+            if (input.value == '') {
+                alert('Você precisa adicionar um texto')
+                return
+            }
+
+            let textInput = document.createTextNode(input.value);
+            let lista = document.createElement('ul');
+            body.appendChild(lista);
+            lista.appendChild(textInput);
+
+            input.value = '';
+            console.log(textInput);
+        })
 
     </script>
 </body>
