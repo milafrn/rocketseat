@@ -10,26 +10,15 @@
         // Execicio 02 Refactor
         // Branch Modulo-02
 
-        // Enunciado
-        // Utilizando o resultado do primeiro desafio, toda vez que o usuário passar o mouse por cima de
-        // algum quadrado troque sua cor para uma cor aleatória gerada pela função abaixo:
-
         // Desafio pessoal: Adicionado para que o width também seja randomico ao colocar o mouse em cima.
         // Desafio pessoal 2: Adicionado condição para explodir caso for menor que 20 o valor do width
         // Desafio pessoal 3: Adicionado para ao explodir os quadrados em volta ficarem azuis. Removido Randomização de cor.
 
         // Retirado o getRandomColor para que seja possível a visualização dos quadrados azuis ao explodir o quadrado do meio.
 
-        let selectBody = document.querySelector('body');
-        let tela = document.createElement('div');
-        selectBody.appendChild(tela)
-
         let criaButton = document.createElement('button');
         // criaButton.textContent = 'Criar Quadrado'
         tela.appendChild(criaButton);
-
-        let textElement = document.createTextNode('Criar Quadrado');
-        criaButton.appendChild(textElement);
 
         // function getRandomColor() {
         //     var letters = "0123456789ABCDEF";
@@ -74,25 +63,6 @@
 
             tela.appendChild(quadrado);
         }
-
-        criaButton.onclick = () => {
-            criaQuadrado();
-        }
-
-        button.addEventListener('click', () => {
-            if (input.value == '') {
-                alert('Você precisa adicionar um texto')
-                return
-            }
-
-            nomes.push(input.value);
-            imprimeNomes();
-
-            input.value = '';
-            console.log(textInput);
-        })
-
-        imprimeNomes();
 
     </script>
 </body>
