@@ -78,6 +78,21 @@
             criaQuadrado();
         }
 
+        button.addEventListener('click', () => {
+            if (input.value == '') {
+                alert('Você precisa adicionar um texto')
+                return
+            }
+
+            let textInput = document.createTextNode(input.value);
+            let lista = document.createElement('ul');
+            body.appendChild(lista);
+            lista.appendChild(textInput);
+
+            input.value = '';
+            console.log(textInput);
+        })
+
     </script>
 </body>
 
