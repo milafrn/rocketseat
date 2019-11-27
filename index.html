@@ -1,70 +1,19 @@
 <html>
 
 <head>
-    <title>Curso de Javascript</title>
+    <title>Curso de Javascript - Modulo 02 - App Todos</title>
 </head>
 
 <body>
-    <script>
-        // Exércicios: Módulo 02
-        // Execicio 02 Refactor
-        // Branch Modulo-02
 
-        // Desafio pessoal: Adicionado para que o width também seja randomico ao colocar o mouse em cima.
-        // Desafio pessoal 2: Adicionado condição para explodir caso for menor que 20 o valor do width
-        // Desafio pessoal 3: Adicionado para ao explodir os quadrados em volta ficarem azuis. Removido Randomização de cor.
+    <div id="app">
+        <ul>
+        </ul>
+    </div>
+    <input type="text" placeholder="Digite um todo">
+    <button>Adicionar</button>
 
-        // Retirado o getRandomColor para que seja possível a visualização dos quadrados azuis ao explodir o quadrado do meio.
-
-        let criaButton = document.createElement('button');
-        // criaButton.textContent = 'Criar Quadrado'
-        tela.appendChild(criaButton);
-
-        // function getRandomColor() {
-        //     var letters = "0123456789ABCDEF";
-        //     var color = "#";
-        //     for (var i = 0; i < 6; i++) {
-        //         color += letters[Math.floor(Math.random() * 16)];
-        //     }
-        //     return color;
-        // }
-
-        let quadrados = []
-        let criaQuadrado = () => {
-            let quadrado = document.createElement('div');
-            quadrados.push(quadrado)
-            for (let i = 0; i < quadrados.length; i++) {
-                console.log(quadrados)
-                quadrados[i].addEventListener("mouseover", (event) => {
-
-                    // event.target.style.backgroundColor = getRandomColor();
-                    let widthRandom = parseInt(quadrados[i].style.width)
-                    if (Math.random() > 0.5) {
-                        quadrados[i].style.width = widthRandom * 1.1;
-                    } else {
-                        quadrados[i].style.width = widthRandom * 0.90;
-                    }
-                    if (widthRandom < 20) {
-                        // quadrado = quadrado.parentNode.removeChild(quadrado)
-                        quadrados[i - 1].style.backgroundColor = 'blue';
-                        quadrados[i + 1].style.backgroundColor = 'blue';
-                        event.target.remove()
-                    }
-                });
-
-            }
-
-        let boxLista = document.createElement('ul');
-
-            quadrado.style.width = 100;
-            quadrado.style.height = 100;
-            quadrado.style.margin = 5;
-            quadrado.style.backgroundColor = 'red';
-
-            tela.appendChild(quadrado);
-        }
-
-    </script>
+    <script src="todos.js"></script>
 </body>
 
 </html>
