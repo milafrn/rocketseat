@@ -1,20 +1,30 @@
+let body = document.querySelector('body')
+let inputElement = document.createElement('input')
+let buttonElement = document.createElement('button')
+buttonElement.textContent = 'Adicionar'
+let listaElement = document.createElement('ul');
 
-function checaIdade(idade) {
-    return new Promise((resolve, reject) => {
-        if (idade >= 18) {
-            setTimeout(resolve, 2000, idade);
-        } else {
-            setTimeout(reject, 2000, idade);
-        }
-    })
-}
+body.appendChild(inputElement);
+body.appendChild(buttonElement);
+body.appendChild(listaElement);
 
+let usuario = undefined;
 
-checaIdade(15)
-    .then(function () {
-        console.log("Maior que 18");
-    })
-    .catch(function () {
-        console.log("Menor que 18");
+buttonElement.addEventListener('click', () => {
+    let list = document.createElement('li');
+    listaElement.appendChild(list);
+    let listText = document.createTextNode(inputElement.value);
+    list.appendChild(listText);
+    usuario = inputElement.value;
+    let paragrafo = document.createElement('p');
+    body.appendChild(paragrafo);
 
-    })
+    axios.get(`https://api.github.com/users/${usuario}/repos`)
+        .then(function (response) {
+            paragrafo.textContent = JSON.stringify(response)
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+})
