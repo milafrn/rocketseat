@@ -11,20 +11,39 @@ body.appendChild(listaElement);
 let usuario = undefined;
 
 buttonElement.addEventListener('click', () => {
+
     let list = document.createElement('li');
+    listText = document.createTextNode('Carregando..');
+    list.appendChild(listText)
     listaElement.appendChild(list);
-    let listText = document.createTextNode(inputElement.value);
-    list.appendChild(listText);
+
     usuario = inputElement.value;
-    let paragrafo = document.createElement('p');
-    body.appendChild(paragrafo);
 
     axios.get(`https://api.github.com/users/${usuario}/repos`)
         .then(function (response) {
-            paragrafo.textContent = JSON.stringify(response)
-            console.log(response)
+            listaElement.removeChild(list);
+            [...response.data].map((dat, index) => {
+                dataRepos = (response.data[index].url);
+                let list = document.createElement('li');
+                let linkElement = document.createElement('a');
+
+                linkElement.setAttribute('href', dataRepos);
+                linkElement.textContent = dataRepos;
+
+                list.appendChild(linkElement);
+                listaElement.appendChild(list);
+            })
         })
         .catch(function (error) {
-            console.log(error);
+            console.warn(error);
+            listaElement.removeChild(list);
+            if (error.response.status === 404) {
+                let list = document.createElement('li');
+                listText = document.createTextNode('Usuário inexistente');
+                list.appendChild(listText)
+                listaElement.appendChild(list);
+                // alert('Usuário inexistente')
+            }
         })
+
 })
